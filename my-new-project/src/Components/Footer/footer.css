@@ -1,0 +1,9 @@
+.logo:hover {
+    color: #00FF00;
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.logo {
+    transition: all 0.2s ease-in-out;
+}
