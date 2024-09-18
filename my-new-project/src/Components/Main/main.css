@@ -1,0 +1,6 @@
+.mainContainer {
+    background-image: url(../../assets/photo-1487147264018-f937fba0c817.avif);
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}

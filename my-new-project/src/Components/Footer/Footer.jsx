@@ -12,11 +12,11 @@ const Footer = () => {
   return (
     <footer>
       <Container fluid>
-        <Row className="d-flex align-items-center justify-content-center p-5 text-white bg-dark mt-5">
+        <Row className="footerRow d-flex align-items-center justify-content-center py-5 bg-light mt-5">
           <Col
             sm={12}
             md={8}
-            className="d-flex flex-column align-items-center justify-content-center p-5 gap-5"
+            className="d-flex flex-column align-items-center justify-content-center gap-5"
           >
             <h3 className="display-4">DREAMY BOOKS</h3>
             <ul className="list-unstyled d-flex gap-2">
@@ -28,10 +28,30 @@ const Footer = () => {
               ))}
             </ul>
             <div className="d-flex gap-4 align-items-center justify-content-center logoDiv">
-              <LogoFacebook color={"#FFFFFF"} height="30px" width="30px" className="logo" />
-              <LogoTwitter color={"#FFFFFF"} height="30px" width="30px" className="logo" />
-              <LogoInstagram color={"#FFFFFF"} height="30px" width="30px" className="logo" />
-              <LogoGithub color={"#FFFFFF"} height="30px" width="30px" className="logo" />
+              <LogoFacebook
+                color={"#D340F7"}
+                height="30px"
+                width="30px"
+                className="logo"
+              />
+              <LogoTwitter
+                color={"#D340F7"}
+                height="30px"
+                width="30px"
+                className="logo"
+              />
+              <LogoInstagram
+                color={"#D340F7"}
+                height="30px"
+                width="30px"
+                className="logo"
+              />
+              <LogoGithub
+                color={"#D340F7"}
+                height="30px"
+                width="30px"
+                className="logo"
+              />
             </div>
           </Col>
         </Row>

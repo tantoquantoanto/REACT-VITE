@@ -1,39 +1,42 @@
-import Button from "../Button/Button"
-import "./hero.css"
-import Fantasy from "../Hero/mainAssets/fantasy.json"
-import History from  "../Hero/mainAssets/history.json"
-import Horror from "../Hero/mainAssets/horror.json"
-import Romance from "../Hero/mainAssets/romance.json"
-import Scifi from "../Hero/mainAssets/scifi.json"
+import Button from "../Button/Button";
+import "./hero.css";
+import Fantasy from "../Hero/mainAssets/fantasy.json";
+import History from "../Hero/mainAssets/history.json";
+import Horror from "../Hero/mainAssets/horror.json";
+import Romance from "../Hero/mainAssets/romance.json";
+import Scifi from "../Hero/mainAssets/scifi.json";
+import { Col, Container, Row } from "react-bootstrap";
 
+const Hero = ({ title, message, img, btnText }) => {
+  const books = [...Fantasy, ...History, ...Horror, ...Romance, ...Scifi];
+  const randomIndex = Math.floor(Math.random() * books.length);
+  const randomBook = books[randomIndex];
+  console.log(randomBook);
 
-
-const Hero = ({title, message, img, btnText}) => {
-
-    const books = [...Fantasy, ...History, ...Horror, ...Romance, ...Scifi];
-    const randomIndex = Math.floor(Math.random()*books.length);
-    const randomBook = books[randomIndex];
-    console.log(randomBook);
-    
-
- return(
-    <section className="container">
-        <div className="row">
-            <div className="col-12 d-flex align-items-center justify-content-center jumbotron">
-                <h1 className="mt-5 p-5">{randomBook.title}</h1>
-                <p className="lead"> {randomBook.category}
-                </p>
-                <hr className="my-4"/>
-                <img className="object-fit-cover h-25 w-25" src={randomBook.img} alt="immagine libro" />
-                <div className="d-flex align-items-center justify-content-center g-3"></div> 
-                <Button
-                 text={randomBook.price} variant={"primary"}
-                />
-               
+  return (
+    <section className="hero d-flex align-items-center">
+      <Container>
+        <Row className="p-5 d-flex align-items-center justify-content-center">
+          <Col className="heroCol d-flex p-0">
+            <div className="heroLeft">
+              <img src={randomBook.img} alt="" />
             </div>
-        </div>
+            <div className="heroRight d-flex flex-column text-align-center p-4">
+              <h3 className="mt-3 display-5 ">BEST SELLER OF THE DAY</h3>
+              <h1 className="mt-5">{randomBook.title}</h1>
+              <p className="lead d-flex align-self-center mt-5">
+                {randomBook.category.toUpperCase()}
+              </p>
+              <hr className="my-4" />
+              <button className="btn mt-5">
+                {`Acquistalo a ${randomBook.price} €`}
+              </button>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     </section>
- )
-}
+  );
+};
 
-export default Hero
+export default Hero;

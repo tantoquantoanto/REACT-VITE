@@ -1,11 +1,50 @@
-.jumbotron {
-    border-radius: 10px;
-    max-height: 500px;
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(214, 214, 219);
-    color: rgb(17, 6, 6);
+.hero {
+  background-color: #f9f9f9;
+  padding: 40px 0;
+}
+
+.heroCol {
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  max-height: 600px;
+  max-width: 900px;
+  margin-top: 30px;
+  position: relative;
+  color: #333;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.heroCol:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.heroLeft img {
+  width: 100%;
+  height: 100%;
+}
+
+.heroRight h1 {
+  font-size: 2rem;
+  color: #5a5a5a;
+}
+
+.heroRight p {
+  font-size: 1.5rem;
+  color: #7a7a7a;
+}
+
+.heroRight button {
+  padding: 10px 30px;
+  background-color: #5c94f4;
+  color: white;
+  align-self: center;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.heroRight button:hover {
+  background-color: #4a7dd2;
+  transform: scale(1.05);
 }
