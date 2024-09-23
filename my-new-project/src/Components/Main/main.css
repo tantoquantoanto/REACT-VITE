@@ -1,5 +1,7 @@
 .mainContainer {
-    background-image: url(../../assets/photo-1487147264018-f937fba0c817.avif);
+    background-image: url(../../assets/pexels-nietjuh-1831744.jpg);
+    background-position: center;
+    background-size: cover;
     border-radius: 20px;
     border: 1px solid #ddd;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);

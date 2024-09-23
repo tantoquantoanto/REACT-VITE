@@ -31,7 +31,7 @@ const BookCard = ({ img, title, category, price }) => {
             {category.toUpperCase()}
           </Card.Text>
           <Button className="card-btn" variant="primary">
-            {price}
+            {`${price} €`}
           </Button>
         </Card.Body>
       </Card>

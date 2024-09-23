@@ -1,8 +1,8 @@
 .nav-bar {
-  background-color: rgb(231, 225, 231);
+  background-color: rgba(29, 27, 27, 0.884);
   border: 1px solid #ddd;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  color: black;
+  color:  #ff6f61;
 }
 
 .navImg {
@@ -22,5 +22,15 @@
 
 .navList li a {
   text-decoration: none;
-  color: grey;
+  color: #ff6f61;
+  
+}
+
+.navList li {
+  transition: all 0.3s ease-in-out;
+  
+}
+
+.navList li:hover  {
+  transform: scale(1.1);
 }

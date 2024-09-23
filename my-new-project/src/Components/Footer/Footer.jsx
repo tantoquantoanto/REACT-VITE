@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <footer>
       <Container fluid>
-        <Row className="footerRow d-flex align-items-center justify-content-center py-5 bg-light mt-5">
+        <Row className="footerRow d-flex align-items-center justify-content-center py-5 bg-dark mt-5">
           <Col
             sm={12}
             md={8}
@@ -29,25 +29,25 @@ const Footer = () => {
             </ul>
             <div className="d-flex gap-4 align-items-center justify-content-center logoDiv">
               <LogoFacebook
-                color={"#D340F7"}
+                color={"#FF6F61"}
                 height="30px"
                 width="30px"
                 className="logo"
               />
               <LogoTwitter
-                color={"#D340F7"}
+                color={"#FF6F61"}
                 height="30px"
                 width="30px"
                 className="logo"
               />
               <LogoInstagram
-                color={"#D340F7"}
+                color={"#FF6F61"}
                 height="30px"
                 width="30px"
                 className="logo"
               />
               <LogoGithub
-                color={"#D340F7"}
+                color={"#FF6F61"}
                 height="30px"
                 width="30px"
                 className="logo"
