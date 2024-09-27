@@ -1,5 +1,6 @@
 import "../Components/Navbar/nav.css";
 import menuArray from "./Navbar/nav";
+import NavInput from "./NavInput/NavInput";
 
 const Navcomponent = () => {
   return (
@@ -20,6 +21,7 @@ const Navcomponent = () => {
               </li>
             ))}
           </ul>
+          <NavInput/>
         </div>
       </div>
     </nav>

@@ -9,17 +9,17 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+
 .heroCol {
   background-color: rgba(30, 29, 29, 0.757);
   border: 1px solid black;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
-  max-height: 500px;
-  max-width: 800px;
+  max-width: 1000px;
   margin-top: 30px;
   position: relative;
-  color: rgb(255,111,97);
-  text-shadow: 0 6px 6px rgba(8, 5, 5, 0.5);;
+  color: rgb(255, 111, 97);
+  text-shadow: 0 6px 6px rgba(8, 5, 5, 0.5);
   overflow: hidden;
   transition: all 0.3s ease-in-out;
 }
@@ -31,18 +31,12 @@
   cursor: pointer;
 }
 
-.heroLeft img {
-  width: 100%;
-  height: 100%;
+.heroLeft {
+  width: 100%; /* In mobile, la larghezza sarà piena */
 }
 
-
-
-.heroRight, .heroLeft {
-  max-width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.heroRight {
+  width: 100%;
 }
 
 .heroRight h3 {
@@ -52,18 +46,13 @@
 
 .heroRight h1 {
   font-size: 1.8rem;
-  display: -webkit-box;
   text-align: center;
-  -webkit-line-clamp: 2;
   overflow: hidden;
-  -webkit-box-orient: vertical;
   text-overflow: ellipsis;
-  
 }
 
 .heroRight p {
   font-size: 1.2rem;
-  
 }
 
 .heroRight button {
