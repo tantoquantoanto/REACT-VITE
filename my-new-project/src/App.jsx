@@ -1,29 +1,19 @@
-import React, { useContext, useEffect, useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
-import Navcomponent from "./Components/Navcomponent";
-import Hero from "./Components/Hero/Hero";
-import Main from "./Components/Main/Main";
-import { Container, Row } from "react-bootstrap";
-import Footer from "./Components/Footer/Footer";
-import MyForm from "./Components/form/MyForm";
-import { SearchContext, SearchProvider } from "./Components/ResearchTools/ResearchTools";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./Pages/HomePage";
+import ChiSiamo from "./Pages/ChiSiamo";
+import BookDetails from "./Pages/BookDetails";
 
 const App = () => {
-  
-
   return (
     <>
-    <SearchProvider>
-      <Navcomponent
-      />
-      <Hero />
-      <Main
-    
-      
-      />
-      <Footer />
-      </SearchProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<HomePage />} />
+          <Route path="/chi-siamo" element={<ChiSiamo />} />
+          <Route path="/book/:bookId" element={<BookDetails />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 };

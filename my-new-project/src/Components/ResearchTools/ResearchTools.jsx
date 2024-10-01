@@ -8,6 +8,7 @@ export const SearchProvider = ({children}) => {
     const [books, setBooks] = useState([]);
     const endPoint = "https://epibooks.onrender.com/";
     const [allBooks, setAllBooks] = useState([]);
+    const [researchedBooks, setResearchedBooks] = useState([]);
   
     const [inputValue, setInputValue] = useState("");
   
@@ -51,6 +52,7 @@ export const SearchProvider = ({children}) => {
           return book.title.toLowerCase().includes(inputValue.toLowerCase());
         });
         setBooks(searchedBooks);
+        setResearchedBooks(searchedBooks);
       }
     };
   

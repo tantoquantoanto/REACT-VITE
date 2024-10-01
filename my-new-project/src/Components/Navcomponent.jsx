@@ -1,6 +1,7 @@
+
 import "../Components/Navbar/nav.css";
-import menuArray from "./Navbar/nav";
 import NavInput from "./NavInput/NavInput";
+import { Link } from "react-router-dom";
 
 const Navcomponent = () => {
   return (
@@ -15,11 +16,9 @@ const Navcomponent = () => {
             />
           </div>
           <ul className="navList">
-            {menuArray.map((item) => (
-              <li>
-                <a href={item.href}> {item.title} </a>
-              </li>
-            ))}
+           <Link to="/chi-siamo">
+           <li>Chi Siamo</li>
+           </Link>
           </ul>
           <NavInput/>
         </div>

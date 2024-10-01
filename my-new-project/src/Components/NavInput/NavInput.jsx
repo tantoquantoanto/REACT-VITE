@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { SearchContext } from "../ResearchTools/ResearchTools";
 
 const NavInput = () => {
@@ -6,7 +6,9 @@ const NavInput = () => {
     const {inputValue, setInputValue, onChangeInput, searchBooks} = useContext(SearchContext)
 
 
-
+useEffect(() => {
+searchBooks()
+}, [])
 
 
 
