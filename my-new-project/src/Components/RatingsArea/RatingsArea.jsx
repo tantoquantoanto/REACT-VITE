@@ -15,6 +15,7 @@ const RatingsArea = ({ asin, showRatingsArea, setShowRatingsArea }) => {
   };
 
   const handleFormChange = (e) => {
+    
     setFormState((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value, 
@@ -56,14 +57,18 @@ const RatingsArea = ({ asin, showRatingsArea, setShowRatingsArea }) => {
 
   return (
     <>
-      <Modal show={showRatingsArea} onHide={closeModal}>
-        <Modal.Header closeButton>
+      <Modal show={showRatingsArea}
+      onClick= {(e) => e.stopPropagation()}>
+        <Modal.Header 
+        onClick={(e) => e.stopPropagation()}
+        closeButton>
           <Modal.Title>Aggiungi la tua recensione</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={onSubmit}>
             <Form.Group>
               <Form.Control
+              onClick={(e) => e.stopPropagation()}
                 type="text"
                 name="comment"
                 placeholder="Scrivi un commento"
@@ -74,6 +79,7 @@ const RatingsArea = ({ asin, showRatingsArea, setShowRatingsArea }) => {
             </Form.Group>
             <Form.Group>
               <Form.Control
+              onClick={(e) => e.stopPropagation()}
                 type="number"
                 name="rate"
                 min={1}

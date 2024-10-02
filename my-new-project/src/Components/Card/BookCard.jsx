@@ -29,7 +29,9 @@ const BookCard = ({
 
   const toggleSelectedCardClass = isSelected ? "cardBorder" : ""; 
 
-  const toggleShowRatingsArea = () => setShowRatingsArea(!showRatingsArea);
+  const toggleShowRatingsArea = (e) => { 
+    e.stopPropagation();
+    setShowRatingsArea(!showRatingsArea)};
 
   return (
     <Col sm={6} md={6} lg={6} className="mb-5">
