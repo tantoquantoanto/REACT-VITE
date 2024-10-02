@@ -21,6 +21,12 @@
 
 }
 
+.lighCards img {
+  max-height: 250px;
+  width: 100%;
+}
+
+
 .cards:hover {
   background-color: rgba(0, 0, 0, 0.897);
   transform: scale(1.1);

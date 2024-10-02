@@ -1,15 +1,31 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SearchContext } from "../ResearchTools/ResearchTools";
 
 const NavInput = () => {
 
-    const {inputValue, setInputValue, onChangeInput, searchBooks} = useContext(SearchContext)
+    const {books,setBooks, allBooks} = useContext(SearchContext)
 
 
-useEffect(() => {
-searchBooks()
-}, [])
-
+    const [inputValue, setInputValue] = useState("");
+    console.log(inputValue)
+    const onChangeInput = (e) => {
+      setInputValue(e.target.value);
+    };
+  
+    const searchBooks = () => {
+      if (inputValue === "") {
+        setBooks(allBooks); 
+      } else {
+     
+        const searchedBooks = books.filter((book) => 
+          book.title.toLowerCase().includes(inputValue.toLowerCase())
+        );
+        console.log("Searched books:", searchedBooks); 
+        setBooks(searchedBooks);
+      }
+    };
+    
+  
 
 
   return (

@@ -6,6 +6,7 @@ import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import { SearchContext } from "../ResearchTools/ResearchTools";
 import CommentModal from "../CommentModal/CommentModal";
 import { LightModeContext } from "../../utilities/LighMode";
+import { v4 as uuidv4 } from 'uuid';
 
 const Main = () => {
   const {
@@ -19,9 +20,8 @@ const Main = () => {
   
   const [selectedBookId, setSelectedBookId] = useState(null);
 
-  // Funzione per selezionare o deselezionare un libro
   const handleBookSelection = (asin) => {
-    setSelectedBookId(selectedBookId === asin ? null : asin); // Se il libro è già selezionato, deselezionalo
+    setSelectedBookId(selectedBookId === asin ? null : asin); 
   };
 
   return (
@@ -46,9 +46,9 @@ const Main = () => {
              
                 {!isLoading &&
                   !isError &&
-                  books.map((book) => (
+                  books.map((book) =>  (
                     <BookCard
-                      key={book.asin}
+                      key={uuidv4()}
                       asin={book.asin}
                       title={book.title}
                       category={book.category}
@@ -66,7 +66,7 @@ const Main = () => {
                 <CommentModal
                   isCommentVisible={!!selectedBookId}
                   setIsCommentVisible={setSelectedBookId}
-                  asin={selectedBookId} // Passa l'ASIN del libro selezionato
+                  asin={selectedBookId} 
                 />
               )}
             </Col>

@@ -3,12 +3,13 @@ import { Button } from "react-bootstrap";
 import "../Components/Navbar/nav.css";
 import { LightModeContext, LightModeProvider } from "../utilities/LighMode";
 import NavInput from "./NavInput/NavInput";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useContext } from "react";
 
 const Navcomponent = () => {
 const {isLightMode,toggleLightMode} = useContext(LightModeContext)
 const toggleNavLightMode = isLightMode ? "lightNav" : "nav-bar"; 
+const location = useLocation();
 
   return (
     <>

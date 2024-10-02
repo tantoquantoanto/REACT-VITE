@@ -7,10 +7,12 @@ import NotFoundPage from "./Pages/NotFoundPage";
 import Contatti from "./Pages/Contatti";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import { LightModeProvider } from "./utilities/LighMode";
+import { SearchProvider } from "./Components/ResearchTools/ResearchTools";
 
 const App = () => {
   return (
     <>
+    <SearchProvider>
     <LightModeProvider>
       <BrowserRouter>
         <Routes>
@@ -23,6 +25,7 @@ const App = () => {
         </Routes>
       </BrowserRouter>
       </LightModeProvider>
+      </SearchProvider>
     </>
   );
 };

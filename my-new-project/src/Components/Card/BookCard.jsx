@@ -37,6 +37,7 @@ const BookCard = ({
         className={`${toggleCardLightMode} h-100 mt-5 ${toggleSelectedCardClass}`}
         onClick={() => onCardClick(asin)} 
       >
+        
         <Card.Img
           className="object-fit-contain w-100 h-100"
           variant="top"
