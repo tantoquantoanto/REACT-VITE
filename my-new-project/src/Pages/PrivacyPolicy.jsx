@@ -1,15 +1,15 @@
 import { Col, Container, Row } from "react-bootstrap"
-import Footer from "../Components/Footer/Footer"
 import Navcomponent from "../Components/Navcomponent"
+import Footer from "../Components/Footer/Footer"
 
-const ChiSiamo = () => {
-    return (
+const PrivacyPolicy = () => {
+    return(
         <>
         <Navcomponent/>
         <Container>
             <Row>
                 <Col className="d-flex align-items-center justify-content-center">
-                <p className="display-5"><strong>CHI SIAMO</strong> </p>
+                <p className="display-5"><strong>PRIVACY POLICY</strong> </p>
                 </Col>
             </Row>
         </Container>
@@ -20,4 +20,4 @@ const ChiSiamo = () => {
     )
 }
 
-export default ChiSiamo
+export default PrivacyPolicy

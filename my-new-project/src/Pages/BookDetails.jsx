@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { Button, Card, Col, Container, Row } from "react-bootstrap"
 import { useParams } from "react-router-dom"
+import Navcomponent from "../Components/Navcomponent"
+import Footer from "../Components/Footer/Footer"
 
 
 const BookDetails = () => {
@@ -47,6 +49,7 @@ useEffect(() => {
 
     return (
     <>
+    <Navcomponent/>
     <Container>
       <Row className="justify-content-center">
         {/* Colonna per il libro */}
@@ -61,7 +64,7 @@ useEffect(() => {
           </Card>
         </Col>
 
-        {/* Colonna per i commenti */}
+        
         <Col sm={12} md={6}>
           <Card>
             <Card.Body>
@@ -87,6 +90,7 @@ useEffect(() => {
         </Col>
       </Row>
     </Container>
+    <Footer/>
     </>
 
 

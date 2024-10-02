@@ -9,6 +9,21 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+.lightHero {
+  background-color: white;
+  border: 1px solid black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  max-width: 1000px;
+  margin-top: 30px;
+  position: relative;
+  color: rgb(255, 111, 97);
+  text-shadow: 0 6px 6px rgba(8, 5, 5, 0.5);
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+
+}
+
 
 .heroCol {
   background-color: rgba(30, 29, 29, 0.757);

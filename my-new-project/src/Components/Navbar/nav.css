@@ -5,6 +5,13 @@
   color:  #ff6f61;
 }
 
+.lightNav {
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  color:  #ff6f61;
+}
+
 .navImg {
   object-fit: cover;
   margin: 0;
@@ -20,7 +27,7 @@
   padding: 10px;
 }
 
-.navList li a {
+a {
   text-decoration: none;
   color: #ff6f61;
   
@@ -34,3 +41,6 @@
 .navList li:hover  {
   transform: scale(1.1);
 }
+
+
+

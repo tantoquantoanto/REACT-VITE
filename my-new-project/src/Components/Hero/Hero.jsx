@@ -3,9 +3,14 @@ import "./hero.css";
 
 import { Col, Container, Row, Button } from "react-bootstrap";
 import { SearchContext } from "../ResearchTools/ResearchTools";
+import { LightModeContext } from "../../utilities/LighMode";
 
 const Hero = () => {
   const { allBooks } = useContext(SearchContext);
+
+  const {isLightMode,toggleLightMode} = useContext(LightModeContext)
+
+  const toggleHeroLightMode = isLightMode ? "lightHero" : "heroCol"
 
   if (allBooks.length === 0) {
     return null; // o un loader, messaggio di caricamento, ecc.
@@ -18,7 +23,7 @@ const Hero = () => {
     <section className="hero d-flex align-items-center justify-content-center">
       <Container>
         <Row className="p-0 p-md-5 d-flex align-items-center justify-content-center">
-          <Col className="heroCol d-flex p-0 flex-column flex-md-row">
+          <Col className={`${toggleHeroLightMode} d-flex p-0 flex-column flex-md-row`}>
             <div className="heroLeft w-100 w-md-50">
               <img
                 className="img-fluid object-fit-contain"

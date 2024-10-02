@@ -2,8 +2,9 @@ import "./card.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Col, Button } from "react-bootstrap";
 import RatingsArea from "../RatingsArea/RatingsArea";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { LightModeContext } from "../../utilities/LighMode";
 
 const BookCard = ({
   asin,
@@ -13,6 +14,9 @@ const BookCard = ({
   onCardClick,
   isSelected,
 }) => {
+
+   const {isLightMode} = useContext(LightModeContext);
+  const toggleCardLightMode = isLightMode? "lightCards" : "cards";
   
   const navigate = useNavigate()
 
@@ -23,15 +27,15 @@ const BookCard = ({
 
   const [showRatingsArea, setShowRatingsArea] = useState(false);
 
-  const toggleSelectedCardClass = isSelected ? "cardBorder" : ""; // Classe per la card selezionata
+  const toggleSelectedCardClass = isSelected ? "cardBorder" : ""; 
 
   const toggleShowRatingsArea = () => setShowRatingsArea(!showRatingsArea);
 
   return (
     <Col sm={6} md={6} lg={6} className="mb-5">
       <Card
-        className={`cards h-100 mt-5 ${toggleSelectedCardClass}`}
-        onClick={() => onCardClick(asin)} // Gestisci la selezione della card
+        className={`${toggleCardLightMode} h-100 mt-5 ${toggleSelectedCardClass}`}
+        onClick={() => onCardClick(asin)} 
       >
         <Card.Img
           className="object-fit-contain w-100 h-100"

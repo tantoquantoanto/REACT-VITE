@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import { SearchContext } from "../ResearchTools/ResearchTools";
 import CommentModal from "../CommentModal/CommentModal";
+import { LightModeContext } from "../../utilities/LighMode";
 
 const Main = () => {
   const {
@@ -13,6 +14,8 @@ const Main = () => {
     isBookError: isError,
   } = useContext(SearchContext);
 
+
+ 
   
   const [selectedBookId, setSelectedBookId] = useState(null);
 
@@ -30,17 +33,17 @@ const Main = () => {
               <Row>
                 <h3 className="mt-2 mb-2 align-self-start">Books</h3>
 
-                {/* Loading Spinner durante il caricamento */}
+             
                 {isLoading && !isError && <LoadingSpinner />}
 
-                {/* Gestione degli errori */}
+               
                 {!isLoading && isError !== "" && (
                   <Alert variant="danger">
                     Oops, qualcosa è andato storto...
                   </Alert>
                 )}
 
-                {/* Mostra le card solo quando non stiamo caricando e non ci sono errori */}
+             
                 {!isLoading &&
                   !isError &&
                   books.map((book) => (
@@ -50,14 +53,14 @@ const Main = () => {
                       title={book.title}
                       category={book.category}
                       img={book.img}
-                      isSelected={selectedBookId === book.asin} // Passa se la card è selezionata
-                      onCardClick={handleBookSelection} // Funzione per gestire la selezione
+                      isSelected={selectedBookId === book.asin} 
+                      onCardClick={handleBookSelection} 
                     />
                   ))}
               </Row>
             </Col>
 
-            {/* Mostra il CommentModal solo se un libro è selezionato */}
+            
             <Col sm={6}>
               {selectedBookId && (
                 <CommentModal

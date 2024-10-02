@@ -7,3 +7,14 @@ body {
   font-family: "Montserrat", sans-serif;
   position: relative;
 }
+
+
+.lightMode {
+  background-color: white;
+ 
+}
+
+.darkMode {
+  background-color: black;
+
+}

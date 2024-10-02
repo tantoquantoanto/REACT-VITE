@@ -9,6 +9,18 @@
   
 }
 
+.lightCards {
+  max-height: 500px;
+  background-color: white
+  border: 1px solid black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: white;
+  transition: all 0.3s ease-in-out;
+  border-radius: 10px;
+  
+
+}
+
 .cards:hover {
   background-color: rgba(0, 0, 0, 0.897);
   transform: scale(1.1);
