@@ -32,9 +32,9 @@ const CommentModal = ({ isCommentVisible, setIsCommentVisible, asin }) => {
         }
       );
 
-      // Assicurati che la risposta sia OK
+      
       if (response.ok) {
-        // Aggiorna lo stato dei ratings per rimuovere il commento cancellato
+        
         setRatings((prevRatings) =>
           prevRatings.filter((rating) => rating._id !== id)
         );
@@ -50,7 +50,7 @@ const CommentModal = ({ isCommentVisible, setIsCommentVisible, asin }) => {
   const showChangeForm = (rating) => {
     setRatingId(rating._id);
     setIsChangeVisible(true);
-    // Imposta i dati del commento per la modifica
+    
     setFormState({
       comment: rating.comment,
       rate: rating.rate,
@@ -116,8 +116,8 @@ const CommentModal = ({ isCommentVisible, setIsCommentVisible, asin }) => {
                   <Button
                     variant="danger"
                     onClick={() => {
-                      setRatingId(rating._id); // Imposta l'ID del commento da rimuovere
-                      removeComment(rating._id); // Chiama la funzione di rimozione
+                      setRatingId(rating._id); 
+                      removeComment(rating._id); 
                     }}
                   >
                     Rimuovi commento

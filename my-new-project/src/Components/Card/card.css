@@ -1,5 +1,5 @@
 .cards {
-  max-height: 500px;
+  max-height: 450px;
   background-color: rgba(30, 29, 29, 0.757);
   border: 1px solid black;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -10,36 +10,39 @@
 }
 
 .lightCards {
-  max-height: 500px;
+  max-height: 450px;
   background-color: white;
   border: 1px solid black;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   color: white;
   transition: all 0.3s ease-in-out;
   border-radius: 10px;
+  color: #ff6f61;
   
 
 }
 
-.lighCards img {
-  max-height: 250px;
+.lightCards img, .cards img {
+  max-height: 220px;
   width: 100%;
 }
 
 
-.cards:hover {
+.lightCards:hover {
+transform: scale(1.1);
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+cursor: pointer;}
+
+.cards:hover{
   background-color: rgba(0, 0, 0, 0.897);
   transform: scale(1.1);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
 
-.cards img {
-  max-height: 250px;
-  width: 100%;
-}
 
-.cardTitle {
+
+.cards h3, .lightCards h3 {
   font-size: 1rem;
   font-weight: bold;
   display: -webkit-box;
@@ -51,7 +54,7 @@
   width: 80%;
 }
 
-.card-btn {
+.cards .btn , .lightCards .btn {
   background-color: #ff6f61;
   color: white;
   padding: 6px 30px;

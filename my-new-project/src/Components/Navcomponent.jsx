@@ -5,8 +5,13 @@ import { LightModeContext, LightModeProvider } from "../utilities/LighMode";
 import NavInput from "./NavInput/NavInput";
 import { Link, useLocation } from "react-router-dom";
 import { useContext } from "react";
+import useBrowserSize from "../utilities/browserSize";
+import DropDownButton from "./DropDownButton/DropDownButton";
 
 const Navcomponent = () => {
+
+  const {widht, height} = useBrowserSize()
+  console.log(widht, height)
 const {isLightMode,toggleLightMode} = useContext(LightModeContext)
 const toggleNavLightMode = isLightMode ? "lightNav" : "nav-bar"; 
 const location = useLocation();
@@ -25,7 +30,8 @@ const location = useLocation();
             />
           </div>
           <Button variant="info" onClick={toggleLightMode}>Light Mode</Button>
-          <ul className="navList">
+    {widht < 768 && (<DropDownButton/>)}
+    {widht > 768 && ( <ul className="navList">
            <Link to="/chi-siamo">
            <li>Chi Siamo</li>
            </Link>
@@ -35,7 +41,9 @@ const location = useLocation();
            <Link to="/privacy-policy">
            <li>Privacy Policy</li>
            </Link>
-          </ul>
+          </ul>)}
+
+         
           {location.pathname === "/" && <NavInput />}
         </div>
       </div>

@@ -5,50 +5,49 @@ const postEndPoint = `https://striveschool-api.herokuapp.com/api/comments`;
 
 const RatingsArea = ({ asin, showRatingsArea, setShowRatingsArea }) => {
   const [formState, setFormState] = useState({
-    elementId: asin, // ID del libro
+    elementId: asin, 
     comment: "",
     rate: 1,
   });
 
   const closeModal = () => {
-    setShowRatingsArea(false); // Chiudi il modal
+    setShowRatingsArea(false); 
   };
 
   const handleFormChange = (e) => {
     setFormState((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value, // Aggiorna il form
+      [e.target.name]: e.target.value, 
     }));
   };
 
   const onSubmit = async (e) => {
-    e.preventDefault(); // Prevenire il reload della pagina
+    e.preventDefault(); 
     try {
       const response = await fetch(postEndPoint, {
         method: "POST",
         headers: {
           Authorization:
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmYxNjc1OTY1MWJkYTAwMTUzNzQzMDIiLCJpYXQiOjE3MjcwOTY2NjUsImV4cCI6MTcyODMwNjI2NX0.UXtXfqdjoHy6oI3BoRTVjvqRzPDseGvCFoO5nIAzIRo",
-          "Content-Type": "application/json", // Headers richiesti
+          "Content-Type": "application/json", 
         },
-        body: JSON.stringify(formState), // Dati inviati nel body
+        body: JSON.stringify(formState), 
       });
 
       if (!response.ok) {
-        throw new Error("Failed to post comment"); // Gestione errori
+        throw new Error("Failed to post comment"); 
       }
 
-      const data = await response.json(); // Risposta dal server
-      console.log(data); // Log della risposta
+      const data = await response.json(); 
+      console.log(data); 
 
-      closeModal(); // Chiudi il modal solo se la richiesta è andata a buon fine
+      closeModal(); 
     } catch (error) {
-      console.log("Error posting comment:", error); // Log degli errori
+      console.log("Error posting comment:", error); 
     }
   };
 
   useEffect(() => {
-    // Aggiorna l'elementId nel formState quando cambia l'asin
     setFormState((prevState) => ({
       ...prevState,
       elementId: asin,
@@ -68,7 +67,7 @@ const RatingsArea = ({ asin, showRatingsArea, setShowRatingsArea }) => {
                 type="text"
                 name="comment"
                 placeholder="Scrivi un commento"
-                value={formState.comment} // Controllo sul valore
+                value={formState.comment} 
                 onChange={handleFormChange}
                 required
               />
@@ -79,7 +78,7 @@ const RatingsArea = ({ asin, showRatingsArea, setShowRatingsArea }) => {
                 name="rate"
                 min={1}
                 max={5}
-                value={formState.rate} // Controllo sul valore
+                value={formState.rate} 
                 onChange={handleFormChange}
                 required
               />

@@ -13,7 +13,7 @@ const Hero = () => {
   const toggleHeroLightMode = isLightMode ? "lightHero" : "heroCol"
 
   if (allBooks.length === 0) {
-    return null; // o un loader, messaggio di caricamento, ecc.
+    return null; 
   }
 
   const randomIndex = Math.floor(Math.random() * allBooks.length);

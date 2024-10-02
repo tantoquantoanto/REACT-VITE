@@ -44,21 +44,19 @@ const BookCard = ({
           src={img}
         />
         <Card.Body className="cardIn d-flex flex-column align-items-center justify-content-center">
-          <div className="cardTitle text-truncate">{title}</div>
+          <h3 className="cardTitle text-truncate">{title}</h3>
           <Card.Text className="card-category mt-2">
             {category.toUpperCase()}
           </Card.Text>
 
           <Button
-            className="rounded-pill mt-2"
-            variant="info"
+            className="btn rounded-pill mt-2"
             onClick={toggleShowRatingsArea}
           >
             Aggiungi commento
           </Button>
           <Button
-            className="rounded-pill mt-2"
-            variant="success"
+            className="btn rounded-pill mt-2"
             onClick={handleRedirectingToDetailsPage}
           >
             Mostra Dettagli
