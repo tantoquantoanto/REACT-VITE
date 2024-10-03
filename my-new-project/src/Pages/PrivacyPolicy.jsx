@@ -1,6 +1,7 @@
 import { Col, Container, Row } from "react-bootstrap"
-import Navcomponent from "../Components/Navcomponent"
+
 import Footer from "../Components/Footer/Footer"
+import Navcomponent from "../Components/Navbar/Navcomponent"
 
 const PrivacyPolicy = () => {
     return(

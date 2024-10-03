@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { SearchContext } from "../ResearchTools/ResearchTools";
+import { SearchContext } from "../../ResearchTools/ResearchTools";
 
 const NavInput = () => {
 

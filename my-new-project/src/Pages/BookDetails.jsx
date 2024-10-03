@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Button, Card, Col, Container, Row, Alert, Form } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import Navcomponent from "../Components/Navcomponent";
 import Footer from "../Components/Footer/Footer";
 import LoadingSpinner from "../Components/LoadingSpinner/LoadingSpinner";
 import ModifyComments from "../Components/ModifyComments/ModifyComments";
+import Navcomponent from "../Components/Navbar/Navcomponent";
+import "./pagescss/bookDetails.css"
+import { LightModeContext } from "../utilities/LighMode";
+
+
 
 const BookDetails = () => {
   const [singleBook, setSingleBook] = useState({});
@@ -15,6 +19,11 @@ const BookDetails = () => {
   const [editedComment, setEditedComment] = useState({ comment: "", rate: 1 }); 
   const [isEditing, setIsEditing] = useState(false); 
   const [isDeleting, setIsDeleting] = useState(false); 
+
+
+  const {isLightMode} = useContext(LightModeContext)
+
+  const toggleSingleBookClass = isLightMode ? "lightCard" : "singleBookCard";
 
   const { bookId } = useParams();
   const endPoint = `https://epibooks.onrender.com/${bookId}`;
@@ -115,19 +124,19 @@ const BookDetails = () => {
       <Container>
         <Row className="justify-content-center">
           <Col sm={12} md={6} className="mb-4">
-            <Card>
+            <Card className={`${toggleSingleBookClass}`}>
               {singleBook.img && <Card.Img variant="top" src={singleBook.img} />}
               <Card.Body>
-                <Card.Title>{singleBook.title}</Card.Title>
-                <Card.Text>{singleBook.category}</Card.Text>
+                <Card.Title className="singleBookTitle">{singleBook.title}</Card.Title>
+                <Card.Text className="singleBookText">{singleBook.category}</Card.Text>
               </Card.Body>
             </Card>
           </Col>
 
           <Col sm={12} md={6}>
-            <Card>
+            <Card className="singleBookComments">
               <Card.Body>
-                <Card.Title>Comments</Card.Title>
+                <Card.Title className="commTitle">Comments</Card.Title>
                 {isCommentLoading ? (
                   <LoadingSpinner />
                 ) : isCommentError ? (

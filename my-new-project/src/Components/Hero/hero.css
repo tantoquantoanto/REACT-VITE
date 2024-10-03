@@ -15,22 +15,6 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
   max-width: 800px;
-  margin-top: 30px;
-  position: relative;
-  color: rgb(255, 111, 97);
-  text-shadow: 0 6px 6px rgba(8, 5, 5, 0.5);
-  overflow: hidden;
-  transition: all 0.3s ease-in-out;
-
-}
-
-
-.heroCol {
-  background-color: rgba(30, 29, 29, 0.757);
-  border: 1px solid black;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
-  max-width: 1000px;
   max-height: 600px;
   margin-top: 30px;
   position: relative;
@@ -38,48 +22,103 @@
   text-shadow: 0 6px 6px rgba(8, 5, 5, 0.5);
   overflow: hidden;
   transition: all 0.3s ease-in-out;
+
 }
+
+
+
+.heroCol {
+  background-color: rgba(30, 29, 29, 0.757);
+  border: 1px solid black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  max-width: 800px;
+  margin-top: 30px;
+  position: relative;
+  color: rgb(255, 111, 97);
+  text-shadow: 0 6px 6px rgba(8, 5, 5, 0.5);
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
 
 .heroCol:hover {
   background-color: rgba(0, 0, 0, 0.897);
-  transform: scale(1.1);
+  transform: scale(1.05);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
 
+
 .heroLeft {
-  width: 100%; /* In mobile, la larghezza sarà piena */
+  width: 100%;
+  max-height: 400px;
 }
+
+.heroLeft img {
+  width: 100%;
+  height: auto; 
+  object-fit: contain;
+}
+
 
 .heroRight {
   width: 100%;
-}
-
-.heroRight h3 {
-  text-align: center;
-  font-weight: bold;
+  text-align: center; 
+  padding: 20px;
 }
 
 .heroRight h1 {
   font-size: 1.8rem;
   text-align: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .heroRight p {
   font-size: 1.2rem;
 }
 
+
 .heroRight button {
   padding: 10px 30px;
   background-color: #5c94f4;
   color: white;
-  align-self: center;
   transition: background-color 0.3s, transform 0.3s;
 }
 
 .heroRight button:hover {
   background-color: #4a7dd2;
   transform: scale(1.1);
+}
+
+
+@media (max-width: 768px) {
+  .heroCol {
+    flex-direction: column;
+  }
+
+  .heroLeft {
+    max-height: 200px; 
+  }
+
+  .heroRight {
+    background-color: rgba(0, 0, 0, 0.726); 
+    padding: 20px;
+    border-radius: 10px; 
+  }
+
+  .heroRight h1 {
+    font-size: 1.5rem; 
+    color: #ffffff; 
+  }
+
+  .heroRight p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff; 
+  }
+
+  .heroRight button {
+    font-size: 0.9rem;
+    padding: 8px 20px;
+  }
 }

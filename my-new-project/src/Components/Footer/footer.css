@@ -1,3 +1,10 @@
+.lightFooter {
+background-color: white;
+color: #f35f52;
+border: 1px solid #ddd;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 .logo:hover {
     color: #00FF00;
     cursor: pointer;
@@ -10,6 +17,7 @@
 
 
 .footerRow {
+    background-color: rgba(29, 27, 27, 0.884);
     color: #ff6f61;
     border: 1px solid #ddd;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);

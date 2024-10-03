@@ -60,12 +60,15 @@ cursor: pointer;}
   padding: 6px 30px;
   border: none;
   border-radius: 20px;
-  transition: background-color 0.3s, transform 0.3s;
+  transition: all 0.1s, transform 0.3s;
 }
 
-.card-btn:hover {
+.cards .btn:hover, .lightCards .btn:hover {
   background-color: #ff8a73;
-  transform: scale(1.05);
+  transform: scale(1.08);
+  color: yellow;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
 }
 
 .cardBorder {

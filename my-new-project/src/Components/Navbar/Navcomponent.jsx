@@ -1,12 +1,13 @@
 
 import { Button } from "react-bootstrap";
-import "../Components/Navbar/nav.css";
-import { LightModeContext, LightModeProvider } from "../utilities/LighMode";
-import NavInput from "./NavInput/NavInput";
+import "./nav.css"
+import { LightModeContext, LightModeProvider } from "../../utilities/LighMode";
+
 import { Link, useLocation } from "react-router-dom";
 import { useContext } from "react";
-import useBrowserSize from "../utilities/browserSize";
-import DropDownButton from "./DropDownButton/DropDownButton";
+import useBrowserSize from "../../utilities/browserSize";
+import DropDownButton from "../DropDownButton/DropDownButton";
+import NavInput from "./NavInput/NavInput";
 
 const Navcomponent = () => {
 
@@ -23,11 +24,7 @@ const location = useLocation();
       <div className="row">
         <div className="col d-flex align-items-center justify-content-between">
           <div className="d-flex h-100">
-            <img
-              className="navImg"
-              src="https://picsum.photos/80/50"
-              alt="logo"
-            />
+            <h1> <Link to="/"> EPIBOOKS </Link> </h1>
           </div>
           <Button variant="info" onClick={toggleLightMode}>Light Mode</Button>
     {widht < 768 && (<DropDownButton/>)}
