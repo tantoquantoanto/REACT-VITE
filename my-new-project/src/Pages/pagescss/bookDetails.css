@@ -64,22 +64,21 @@
     color: #ff6f61; 
   }
   
-  /* Stile per ogni commento */
+
   .singleBookComments ul {
     padding-left: 0;
   }
   
   .singleBookComments li {
     margin-bottom: 1rem;
-    border-bottom: 1px solid #ddd; /* Linea separatrice tra i commenti */
-    padding-bottom: 10px; /* Padding per il margine inferiore */
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px; 
   }
   
   .singleBookComments button {
-    transition: background-color 0.3s, transform 0.3s; /* Transizione per i pulsanti */
+    transition: background-color 0.3s, transform 0.3s;
   }
-  
   .singleBookComments button:hover {
-    transform: scale(1.05); /* Effetto zoom al passaggio del mouse sui pulsanti */
+    transform: scale(1.05);
   }
   
