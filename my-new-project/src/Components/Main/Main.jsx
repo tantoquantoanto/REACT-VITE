@@ -4,8 +4,6 @@ import BookCard from "../Card/BookCard";
 import { useContext, useState } from "react";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import { SearchContext } from "../ResearchTools/ResearchTools";
-import CommentModal from "../CommentModal/CommentModal";
-import { LightModeContext } from "../../utilities/LighMode";
 import { v4 as uuidv4 } from 'uuid';
 
 const Main = () => {
@@ -29,8 +27,8 @@ const Main = () => {
       <Row>
         <Col sm={12} className="p-0">
           <Row>
-            <Col sm={6}>
-              <Row>
+            
+             
                 <h3 className="mt-2 mb-2 align-self-start">Books</h3>
 
              
@@ -57,21 +55,13 @@ const Main = () => {
                       onCardClick={handleBookSelection} 
                     />
                   ))}
-              </Row>
+             </Row>
             </Col>
 
             
-            <Col sm={6}>
-              {selectedBookId && (
-                <CommentModal
-                  isCommentVisible={!!selectedBookId}
-                  setIsCommentVisible={setSelectedBookId}
-                  asin={selectedBookId} 
-                />
-              )}
-            </Col>
-          </Row>
-        </Col>
+           
+        
+       
       </Row>
     </Container>
   );

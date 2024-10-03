@@ -34,7 +34,7 @@ const BookCard = ({
     setShowRatingsArea(!showRatingsArea)};
 
   return (
-    <Col sm={6} md={6} lg={6} className="mb-5">
+    <Col sm={12} md={4} lg={3} className="mb-5">
       <Card
         className={`${toggleCardLightMode} h-100 mt-5 ${toggleSelectedCardClass}`}
         onClick={() => onCardClick(asin)} 
