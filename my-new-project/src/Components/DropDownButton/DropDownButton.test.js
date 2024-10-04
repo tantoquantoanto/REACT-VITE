@@ -1,27 +1,29 @@
-import '@testing-library/jest-dom'
-import DropDownButton from './DropDownButton'
-import {fireEvent, render} from '@testing-library/react'
+import "@testing-library/jest-dom";
+import DropDownButton from "./DropDownButton";
+import { fireEvent, render } from "@testing-library/react";
+import { act } from "react";
 
+describe("Test DropDownButton Component", () => {
+  it("should render three drop down items on click", () => {
+    global.innerWidth = 500;
+    global.dispatchEvent(new Event("resize"));
+    const { getByText } = render(<DropDownButton />);
 
+    const dropDownButton = getByText("Menu");
 
-describe('Test DropDownButton Component', () => {
-it('should render three drop down items on click', () => {
+    expect(dropDownButton).toBeInTheDocument();
 
-const { getByText } = render(<DropDownButton/>);
+    
+        fireEvent.click(dropDownButton)
+      
+    
 
-const dropDownButton = getByText('Menu');
-const firstDropItem = getByText('Chi Siamo');
-const secondDropItem = getByText('Contatti');
-const thirdDropItem = getByText('Privacy Policy');
+    const firstDropItem = getByText("Chi Siamo");
+    const secondDropItem = getByText("Contatti");
+    const thirdDropItem = getByText("Privacy Policy");
 
-fireEvent.click(dropDownButton)
-
-expect(firstDropItem)
-.toBeInTheDocument()
-
-
-
-})
-
-
-})
+    expect(firstDropItem).toBeInTheDocument();
+    expect(secondDropItem).toBeInTheDocument();
+    expect(thirdDropItem).toBeInTheDocument();
+  });
+});
