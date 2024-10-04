@@ -44,6 +44,7 @@ const BookCard = ({
           className="object-fit-contain w-100 h-100"
           variant="top"
           src={img}
+          alt={`image of ${title}`}
         />
         <Card.Body className="cardIn d-flex flex-column align-items-center justify-content-center">
           <h3 className="cardTitle text-truncate">{title}</h3>
