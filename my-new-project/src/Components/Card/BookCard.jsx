@@ -38,6 +38,7 @@ const BookCard = ({
       <Card
         className={`${toggleCardLightMode} h-100 mt-5 ${toggleSelectedCardClass}`}
         onClick={() => onCardClick(asin)} 
+        data-testid = "cardTest"
       >
         
         <Card.Img
