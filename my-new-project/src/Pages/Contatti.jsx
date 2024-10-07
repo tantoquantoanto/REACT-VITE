@@ -1,56 +1,66 @@
+import { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import Footer from "../Components/Footer/Footer";
 import Navcomponent from "../Components/Navbar/Navcomponent";
-import { useContext } from "react";
-import "./pagescss/contacts.css";
-import { LightModeContext } from "../utilities/LighMode";
+import useLocalStorage from "../utilities/useLocalStorage";
 
 const Contatti = () => {
-  const { isLightMode } = useContext(LightModeContext);
+ 
+  const [userData, setUserData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
-  const toggleContactsClass = isLightMode ? "" : "darkContacts";
+  
+  const [, setStoredUserData] = useLocalStorage("userData", {});
+
+  const handleChange = (e) => {
+    const { name, value } = e.target; 
+    setUserData((prevData) => ({
+      ...prevData, 
+      [name]: value, 
+    }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+   
+    setStoredUserData(userData);
+
+    console.log("Form inviato e dati salvati nel localStorage:", userData);
+    alert("Dati salvati nel local storage!");
+  };
+
   return (
     <>
       <Navcomponent />
-      <Container fluid className={`mt-5 ${toggleContactsClass}`}>
+      <Container fluid className="mt-5">
         <h1 className="text-center mb-4">Contattaci</h1>
 
-        <Row className="mb-5">
-          <Col md={12}>
-            <h2>Hai domande o suggerimenti?</h2>
-            <p>
-              Siamo qui per aiutarti! Compila il modulo qui sotto e ti
-              risponderemo il prima possibile.
-            </p>
-          </Col>
-        </Row>
-
         <Row>
-          <Col md={6} className="mb-4">
-            <h2>Informazioni di Contatto</h2>
-            <p>
-              <strong>Email:</strong> info@epibooks.com
-            </p>
-            <p>
-              <strong>Telefono:</strong> +39 012 345 6789
-            </p>
-            <p>
-              <strong>Indirizzo:</strong> Via dei Libri, 123, Roma, Italia
-            </p>
-          </Col>
-
           <Col md={6}>
             <h2>Compila il Modulo</h2>
-            <Form>
+            <Form onSubmit={handleSubmit}>
               <Form.Group controlId="formBasicName">
                 <Form.Label>Nome</Form.Label>
-                <Form.Control type="text" placeholder="Inserisci il tuo nome" />
+                <Form.Control
+                  type="text"
+                  name="name" 
+                  value={userData.name} 
+                  onChange={handleChange} 
+                  placeholder="Inserisci il tuo nome"
+                />
               </Form.Group>
 
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
                 <Form.Control
                   type="email"
+                  name="email" 
+                  value={userData.email} 
+                  onChange={handleChange} 
                   placeholder="Inserisci la tua email"
                 />
               </Form.Group>
@@ -60,6 +70,9 @@ const Contatti = () => {
                 <Form.Control
                   as="textarea"
                   rows={3}
+                  name="message" 
+                  value={userData.message} 
+                  onChange={handleChange} o
                   placeholder="Scrivi il tuo messaggio"
                 />
               </Form.Group>

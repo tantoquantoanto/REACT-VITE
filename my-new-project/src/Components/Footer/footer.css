@@ -1,24 +1,31 @@
 .lightFooter {
-background-color: white;
-color: #f35f52;
-border: 1px solid #ddd;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  background-color: white;
+  color: #f35f52;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .logo:hover {
-    color: #00FF00;
-    cursor: pointer;
-    transform: scale(1.2);
+  color: #00ff00;
+  cursor: pointer;
+  transform: scale(1.2);
 }
 
 .logo {
-    transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
-
 .footerRow {
-    background-color: rgba(29, 27, 27, 0.884);
-    color: #ff6f61;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  background-color: rgba(29, 27, 27, 0.884);
+  color: #ff6f61;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
 }
