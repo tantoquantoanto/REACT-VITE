@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import 'jest-fetch-mock';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import ModifyComments from './ModifyComments'; // Assicurati che il percorso sia corretto
+import ModifyComments from './ModifyComments'; 
 import { MemoryRouter } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
@@ -17,7 +17,7 @@ const renderWithProps = (props) => {
 
 describe('ModifyComments Component', () => {
   beforeEach(() => {
-    fetch.resetMocks(); // Resetta i mock di fetch prima di ogni test
+    fetch.resetMocks();
   });
 
   it('should display loading spinner when submitting the form', async () => {
@@ -37,15 +37,13 @@ describe('ModifyComments Component', () => {
       target: { value: 4 },
     });
 
-    // Mock della risposta fetch
+   
     fetch.mockResponseOnce(JSON.stringify({}));
 
-    // Simula il submit
     fireEvent.submit(screen.getByRole('form'));
 
-    expect(screen.getByRole('alert')).not.toBeInTheDocument(); // Assicurati che l'alert non sia presente
+    expect(screen.getByRole('alert')).not.toBeInTheDocument(); 
 
-    // Aspetta che il caricamento sia completato
     await waitFor(() => expect(screen.queryByRole('alert')).toBeNull());
   });
 
@@ -57,7 +55,7 @@ describe('ModifyComments Component', () => {
       handleUpdateComment: mockHandleUpdateComment,
     };
 
-    // Mock della funzione fetch per simulare un errore
+  
     fetch.mockReject(new Error('Network Error'));
 
     renderWithProps(props);
@@ -71,7 +69,7 @@ describe('ModifyComments Component', () => {
 
     fireEvent.submit(screen.getByRole('form'));
 
-    // Aspetta che il messaggio di errore venga visualizzato
+   
     await waitFor(() => expect(screen.getByText('Oops, qualcosa è andato storto...')).toBeInTheDocument());
   });
 
@@ -83,7 +81,7 @@ describe('ModifyComments Component', () => {
       handleUpdateComment: mockHandleUpdateComment,
     };
 
-    // Mock della risposta fetch
+   
     fetch.mockResponseOnce(JSON.stringify({ id: '1', comment: 'Nuovo commento', rate: 4 }));
 
     renderWithProps(props);
