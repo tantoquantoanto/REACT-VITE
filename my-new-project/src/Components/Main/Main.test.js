@@ -1,62 +1,59 @@
-/*
-import { render } from "@testing-library/react";
-import "@testing-library/jest-dom";
-import { SearchProvider } from "../ResearchTools/ResearchTools";
-import Main from "./Main";
-import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import '@testing-library/jest-dom';
+import { render, screen, waitFor } from '@testing-library/react';
+import Main from './Main';
+import { SearchContext } from '../ResearchTools/ResearchTools';
+import { MemoryRouter } from 'react-router-dom';
+import { LightModeProvider } from '../../utilities/LighMode';
 
 
-// Mock dei dati dei libri
 const mockBooks = [
-  { asin: "1", title: "Book One", category: "Fiction", img: "book1.jpg" },
-  { asin: "2", title: "Book Two", category: "Non-Fiction", img: "book2.jpg" },
+  { asin: '123', title: 'Book 1', category: 'Category 1', img: 'book1.jpg' },
+  { asin: '456', title: 'Book 2', category: 'Category 2', img: 'book2.jpg' },
 ];
 
-describe("Main component", () => {
-  it("renders loading spinner when loading", () => {
-    const { getByTestId } = render(
-      <SearchProvider value={{ books: [], isBookLoading: true, isBookError: "" }}>
-        <Main />
-      </SearchProvider>
-    );
 
-    // Verifica che il LoadingSpinner sia presente
-    expect(getByTestId("loading-spinner")).toBeInTheDocument();
+const renderWithContext = (contextValue) => {
+  return render(
+    <MemoryRouter>
+      <SearchContext.Provider value={contextValue}>
+        <LightModeProvider>
+        <Main />
+        </LightModeProvider>
+      </SearchContext.Provider>
+    </MemoryRouter>
+  );
+};
+
+describe('Main Component', () => {
+  it('should display loading spinner when books are loading', () => {
+    renderWithContext({
+      books: [],
+      isBookLoading: true,
+      isBookError: "",
+    });
+
+    expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
   });
 
-  it("renders an error message when there is an error", () => {
-    const { getByText } = render(
-      <SearchProvider value={{ books: [], isBookLoading: false, isBookError: "Error" }}>
-        <Main />
-      </SearchProvider>
-    );
+  it('should display an error message when there is an error', () => {
+    renderWithContext({
+      books: [],
+      isBookLoading: false,
+      isBookError: "Error fetching books",
+    });
 
-    // Verifica che il messaggio di errore sia presente
-    expect(getByText("Oops, qualcosa è andato storto...")).toBeInTheDocument();
+    expect(screen.getByText('Oops, qualcosa è andato storto...')).toBeInTheDocument();
   });
 
-  it("renders books when there are no loading or error states", () => {
-    const { getByText } = render(
-      <SearchProvider value={{ books: mockBooks, isBookLoading: false, isBookError: "" }}>
-        <Main />
-      </SearchProvider>
-    );
+  it('should display book cards when books are loaded', () => {
+    renderWithContext({
+      books: mockBooks,
+      isBookLoading: false,
+      isBookError: "",
+    });
 
-    // Verifica che i titoli dei libri siano presenti
-    expect(getByText("Book One")).toBeInTheDocument();
-    expect(getByText("Book Two")).toBeInTheDocument();
-  });
-
-  it("renders the correct number of BookCard components", () => {
-    const { container } = render(
-      <SearchProvider value={{ books: mockBooks, isBookLoading: false, isBookError: "" }}>
-        <Main />
-      </SearchProvider>
-    );
-
-    // Verifica che il numero di BookCard sia corretto
-    const bookCards = container.getElementsByClassName("cardTest"); // Assicurati di avere una classe specifica nel tuo BookCard
-    expect(bookCards.length).toBe(mockBooks.length);
+    expect(screen.getByText('Book 1')).toBeInTheDocument();
+    expect(screen.getByText('Book 2')).toBeInTheDocument();
+   
   });
 });
-*/

@@ -10,6 +10,7 @@ const LoadingSpinner = () => {
             <DotLoader
             className="dotLoader"
             color="#ff6f61"
+            data-testid= "loading-spinner"
             
             
             />
