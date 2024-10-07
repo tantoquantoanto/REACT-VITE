@@ -16,8 +16,8 @@ export const SearchProvider = ({ children }) => {
       const response = await fetch(endPoint);
       const data = await response.json();
 
-      setAllBooks(data.slice(0,40));
-      setBooks(data.slice(0,40));
+      setAllBooks(data.slice(0, 40));
+      setBooks(data.slice(0, 40));
       console.log(data);
     } catch (error) {
       setIsBookError(error.message);

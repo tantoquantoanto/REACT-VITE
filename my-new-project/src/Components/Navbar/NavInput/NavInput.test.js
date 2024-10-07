@@ -15,36 +15,27 @@ describe("Test NavInput Comnponent", () => {
     );
 
     const inputElement = getByPlaceholderText("Cerca un libro");
-    expect(inputElement).toBeInTheDocument()
+    expect(inputElement).toBeInTheDocument();
     expect(inputElement).toHaveValue("");
 
-
-    fireEvent.change(inputElement)
-
+    fireEvent.change(inputElement);
   });
 
   it("should change its value on change", () => {
-     const {getByText, getByPlaceholderText} = render(
-        <SearchProvider>
+    const { getByText, getByPlaceholderText } = render(
+      <SearchProvider>
         <LightModeProvider>
           <NavInput />
         </LightModeProvider>
       </SearchProvider>
-     )
-     const inputElement = getByPlaceholderText("Cerca un libro");
-     fireEvent.change(inputElement, {
-        target:{
-            value: "Ciao a tutti"
-        }
-     }
-     );
+    );
+    const inputElement = getByPlaceholderText("Cerca un libro");
+    fireEvent.change(inputElement, {
+      target: {
+        value: "Ciao a tutti",
+      },
+    });
 
-     expect(inputElement).toHaveValue("Ciao a tutti")
-
-
-  })
-
-
+    expect(inputElement).toHaveValue("Ciao a tutti");
+  });
 });
-
-

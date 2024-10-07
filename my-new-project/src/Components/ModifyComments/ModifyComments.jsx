@@ -12,8 +12,8 @@ const ModifyComments = ({
     setIsChangeVisible(!isChangeVisible);
   };
 
-  const [isChangeLoading, setIsChangeLoading] = useState(false)
-  const [isChangeError, setIsChangeError] = useState(false)
+  const [isChangeLoading, setIsChangeLoading] = useState(false);
+  const [isChangeError, setIsChangeError] = useState(false);
   const [formState, setFormState] = useState({
     elementId: id,
     comment: "",
@@ -32,7 +32,7 @@ const ModifyComments = ({
   const changeOnSubmit = async (e) => {
     e.preventDefault();
     try {
-        setIsChangeLoading(true)
+      setIsChangeLoading(true);
       const response = await fetch(putEndpoint, {
         method: "PUT",
         headers: {
@@ -42,7 +42,7 @@ const ModifyComments = ({
         },
         body: JSON.stringify(formState),
       });
-      setIsChangeLoading(false)
+      setIsChangeLoading(false);
 
       const updatedComment = await response.json();
       handleUpdateComment(updatedComment);
@@ -50,10 +50,9 @@ const ModifyComments = ({
       closeModal();
     } catch (error) {
       console.log("Error:", error);
-      setIsChangeError(true)
-    }
-    finally {
-        setIsChangeLoading(false)
+      setIsChangeError(true);
+    } finally {
+      setIsChangeLoading(false);
     }
   };
 
@@ -64,54 +63,46 @@ const ModifyComments = ({
     }));
   }, [id]);
 
-
-  
-
   return (
     <Modal show={isChangeVisible}>
       <Modal.Header>
         <Modal.Title>Modifica la tua recensione</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-    {isChangeLoading && !isChangeError && (<LoadingSpinner/>)}
-    {!isChangeLoading && isChangeError && (
-        <Alert variant="danger">Oops, qualcosa è andato storto...</Alert>
-    )}
-    {!isChangeLoading && !isChangeError &&(
-        <Form onSubmit={changeOnSubmit}>
-        <Form.Control
-          onChange={handleFormChange}
-          type="text"
-          name="comment"
-          required
-          value={formState.comment}
-          placeholder="Cambia il tuo commento"
-        />
-        <Form.Control
-          onChange={handleFormChange}
-          type="number"
-          min={1}
-          max={5}
-          name="rate"
-          required
-          value={formState.rate}
-          placeholder="Cambia il tuo rate"
-        />
-        <div className="d-flex align-items-center justify-content-center gap-2 mt-2">
-          <Button 
-          type="submit"
-          variant="success"
-          >Salva Modifica</Button>
-          <Button 
-          onClick={closeModal}
-          variant="danger"
-          >Annulla Modifica</Button>
-        </div>
-      </Form>
-      
-    )}
-
-        
+        {isChangeLoading && !isChangeError && <LoadingSpinner />}
+        {!isChangeLoading && isChangeError && (
+          <Alert variant="danger">Oops, qualcosa è andato storto...</Alert>
+        )}
+        {!isChangeLoading && !isChangeError && (
+          <Form onSubmit={changeOnSubmit}>
+            <Form.Control
+              onChange={handleFormChange}
+              type="text"
+              name="comment"
+              required
+              value={formState.comment}
+              placeholder="Cambia il tuo commento"
+            />
+            <Form.Control
+              onChange={handleFormChange}
+              type="number"
+              min={1}
+              max={5}
+              name="rate"
+              required
+              value={formState.rate}
+              placeholder="Cambia il tuo rate"
+            />
+            <div className="d-flex align-items-center justify-content-center gap-2 mt-2">
+              <Button type="submit" variant="success">
+                Salva Modifica
+              </Button>
+              <Button onClick={closeModal} variant="danger">
+                Annulla Modifica
+              </Button>
+            </div>
+          </Form>
+        )}
       </Modal.Body>
     </Modal>
   );

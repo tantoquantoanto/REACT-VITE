@@ -23,10 +23,7 @@
   text-shadow: 0 6px 6px rgba(8, 5, 5, 0.5);
   overflow: hidden;
   transition: all 0.3s ease-in-out;
-
 }
-
-
 
 .heroCol {
   background-color: rgba(30, 29, 29, 0.757);
@@ -42,14 +39,12 @@
   transition: all 0.3s ease-in-out;
 }
 
-
 .heroCol:hover {
   background-color: rgba(0, 0, 0, 0.897);
   transform: scale(1.05);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
-
 
 .heroLeft {
   width: 100%;
@@ -58,14 +53,13 @@
 
 .heroLeft img {
   width: 100%;
-  height: auto; 
+  height: auto;
   object-fit: contain;
 }
 
-
 .heroRight {
   width: 100%;
-  text-align: center; 
+  text-align: center;
   padding: 20px;
 }
 
@@ -77,7 +71,6 @@
 .heroRight p {
   font-size: 1.2rem;
 }
-
 
 .heroRight button {
   padding: 10px 30px;
@@ -91,31 +84,30 @@
   transform: scale(1.1);
 }
 
-
 @media (max-width: 768px) {
   .heroCol {
     flex-direction: column;
   }
 
   .heroLeft {
-    max-height: 200px; 
+    max-height: 200px;
   }
 
   .heroRight {
-    background-color: rgba(0, 0, 0, 0.726); 
+    background-color: rgba(0, 0, 0, 0.726);
     padding: 20px;
-    border-radius: 10px; 
+    border-radius: 10px;
   }
 
   .heroRight h1 {
-    font-size: 1.5rem; 
-    color: #ffffff; 
+    font-size: 1.5rem;
+    color: #ffffff;
   }
 
   .heroRight p {
     font-size: 1.2rem;
     font-weight: bold;
-    color: #ffffff; 
+    color: #ffffff;
   }
 
   .heroRight button {

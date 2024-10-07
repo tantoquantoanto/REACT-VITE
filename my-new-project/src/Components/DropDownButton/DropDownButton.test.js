@@ -13,10 +13,7 @@ describe("Test DropDownButton Component", () => {
 
     expect(dropDownButton).toBeInTheDocument();
 
-    
-        fireEvent.click(dropDownButton)
-      
-    
+    fireEvent.click(dropDownButton);
 
     const firstDropItem = getByText("Chi Siamo");
     const secondDropItem = getByText("Contatti");

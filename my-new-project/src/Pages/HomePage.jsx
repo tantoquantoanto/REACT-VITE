@@ -6,24 +6,15 @@ import Main from "../Components/Main/Main";
 import Footer from "../Components/Footer/Footer";
 import Navcomponent from "../Components/Navbar/Navcomponent";
 
-
-
 const HomePage = () => {
-    return (
-        <>
-    
-      <Navcomponent
-      />
+  return (
+    <>
+      <Navcomponent />
       <Hero />
-      <Main
-    
-      
-      />
-      <Footer/>
-      
+      <Main />
+      <Footer />
     </>
+  );
+};
 
-    )
-}
-
-export default HomePage
+export default HomePage;

@@ -6,41 +6,32 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { LightModeContext } from "../../utilities/LighMode";
 
-const BookCard = ({
-  asin,
-  img,
-  title,
-  category,
-  onCardClick,
-  isSelected,
-}) => {
+const BookCard = ({ asin, img, title, category, onCardClick, isSelected }) => {
+  const { isLightMode } = useContext(LightModeContext);
+  const toggleCardLightMode = isLightMode ? "lightCards" : "cards";
 
-   const {isLightMode} = useContext(LightModeContext);
-  const toggleCardLightMode = isLightMode? "lightCards" : "cards";
-  
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleRedirectingToDetailsPage = () => {
-    navigate(`/book/${asin}`)
-  }
-
+    navigate(`/book/${asin}`);
+  };
 
   const [showRatingsArea, setShowRatingsArea] = useState(false);
 
-  const toggleSelectedCardClass = isSelected ? "cardBorder" : ""; 
+  const toggleSelectedCardClass = isSelected ? "cardBorder" : "";
 
-  const toggleShowRatingsArea = (e) => { 
+  const toggleShowRatingsArea = (e) => {
     e.stopPropagation();
-    setShowRatingsArea(!showRatingsArea)};
+    setShowRatingsArea(!showRatingsArea);
+  };
 
   return (
     <Col sm={12} md={4} lg={3} className="mb-5">
       <Card
         className={`${toggleCardLightMode} h-100 mt-5 ${toggleSelectedCardClass}`}
-        onClick={() => onCardClick(asin)} 
+        onClick={() => onCardClick(asin)}
         data-testid="cardTest"
       >
-        
         <Card.Img
           className="object-fit-contain w-100 h-100"
           variant="top"
@@ -65,10 +56,7 @@ const BookCard = ({
           >
             Mostra Dettagli
           </Button>
-          
-          
 
-          
           {showRatingsArea && (
             <RatingsArea
               asin={asin}
