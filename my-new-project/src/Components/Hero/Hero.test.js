@@ -25,8 +25,9 @@ describe('Hero Component', () => {
 
     expect(screen.getByText('BEST SELLER')).toBeInTheDocument();
     expect(screen.getByText('Book 1')).toBeInTheDocument();
-    expect(screen.getByText('CATEGORY 1')).toBeInTheDocument(); 
-    expect(screen.getByText('Acquistalo a 10 €')).toBeInTheDocument(); 
+    expect(screen.getByText('CATEGORY 1')).toBeInTheDocument(); // Example for category
+    expect(screen.getByText('Acquistalo a 10 €')).toBeInTheDocument(); // Example for price
+  });
 
   it('should not render anything when allBooks is empty', () => {
     renderWithContext({ allBooks: [] });
