@@ -1,12 +1,21 @@
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import Footer from "../Components/Footer/Footer";
 import Navcomponent from "../Components/Navbar/Navcomponent";
+import "./pagescss/chisiamo.css"
+import { useContext } from "react";
+import { LightModeContext } from "../utilities/LighMode";
 
 const ChiSiamo = () => {
+
+
+  const { isLightMode } = useContext(LightModeContext);
+
+  const toggleChiSiamoClass = isLightMode ? "" : "darkAbouts";
+
   return (
     <>
       <Navcomponent />
-      <Container className="mt-5">
+      <Container className= {`mt-5 ${toggleChiSiamoClass}`}>
         <h1 className="text-center mb-4">Chi Siamo</h1>
 
         <Row className="mb-5">

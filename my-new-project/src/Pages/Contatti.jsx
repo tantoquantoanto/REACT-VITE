@@ -1,10 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import Footer from "../Components/Footer/Footer";
 import Navcomponent from "../Components/Navbar/Navcomponent";
 import useLocalStorage from "../utilities/useLocalStorage";
+import "./pagescss/contacts.css"
+import { LightModeContext } from "../utilities/LighMode";
 
 const Contatti = () => {
+
+  const { isLightMode } = useContext(LightModeContext);
+
+  const toggleContactsClass = isLightMode ? "" : "darkContacts";
+
  
   const [userData, setUserData] = useState({
     name: "",
@@ -36,7 +43,7 @@ const Contatti = () => {
   return (
     <>
       <Navcomponent />
-      <Container fluid className="mt-5">
+      <Container fluid className=  {`mt-5 ${toggleContactsClass}`}>
         <h1 className="text-center mb-4">Contattaci</h1>
 
         <Row>

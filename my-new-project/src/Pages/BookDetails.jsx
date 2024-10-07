@@ -1,4 +1,7 @@
 import { useContext, useEffect, useState } from "react";
+import "./pagescss/bookDetails.css"
+
+
 import {
   Button,
   Card,
@@ -6,7 +9,6 @@ import {
   Container,
   Row,
   Alert,
-  Form,
 } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import Footer from "../Components/Footer/Footer";
@@ -25,27 +27,31 @@ const BookDetails = () => {
   const [editedComment, setEditedComment] = useState({ comment: "", rate: 1 });
   const [isEditing, setIsEditing] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isBookLoading, setIsBookLoading] = useState(false); // Stato per il caricamento del libro
 
   const { isLightMode } = useContext(LightModeContext);
-
   const toggleSingleBookClass = isLightMode ? "lightCard" : "singleBookCard";
-
   const { bookId } = useParams();
   const endPoint = `https://epibooks.onrender.com/${bookId}`;
 
   const getBookFromApi = async () => {
     try {
+      setIsBookLoading(true);
+      await new Promise((resolve) => setTimeout(resolve, 1500)); 
       const response = await fetch(endPoint);
       const data = await response.json();
       setSingleBook(data[0]);
     } catch (e) {
       console.log(e);
+    } finally {
+      setIsBookLoading(false);
     }
   };
 
   const getCommentsForTheSingleBook = async () => {
     try {
       setIsCommentLoading(true);
+      await new Promise((resolve) => setTimeout(resolve, 1500)); 
       const response = await fetch(
         `https://striveschool-api.herokuapp.com/api/books/${bookId}/comments/`
       );
@@ -58,6 +64,7 @@ const BookDetails = () => {
     }
   };
 
+ 
   const removeComment = async (id) => {
     try {
       setIsDeleting(true);
@@ -67,7 +74,7 @@ const BookDetails = () => {
           method: "DELETE",
           headers: {
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmYxNjc1OTY1MWJkYTAwMTUzNzQzMDIiLCJpYXQiOjE3MjcwOTY2NjUsImV4cCI6MTcyODMwNjI2NX0.UXtXfqdjoHy6oI3BoRTVjvqRzPDseGvCFoO5nIAzIRo",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzA0MGE4NWE5Njc4OTAwMTVlYWM4ZjEiLCJpYXQiOjE3MjgzMTgwODUsImV4cCI6MTcyOTUyNzY4NX0.uHdBbqfI4WUaivJPQc_J-aSmQiabD5LyRM8Edr5JElE",
           },
         }
       );
@@ -87,6 +94,7 @@ const BookDetails = () => {
     }
   };
 
+ 
   const handleEditComment = (comment) => {
     setEditingCommentId(comment._id);
     setEditedComment({ comment: comment.comment, rate: comment.rate });
@@ -102,7 +110,7 @@ const BookDetails = () => {
           method: "PUT",
           headers: {
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmYxNjc1OTY1MWJkYTAwMTUzNzQzMDIiLCJpYXQiOjE3MjcwOTY2NjUsImV4cCI6MTcyODMwNjI2NX0.UXtXfqdjoHy6oI3BoRTVjvqRzPDseGvCFoO5nIAzIRo",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzA0MGE4NWE5Njc4OTAwMTVlYWM4ZjEiLCJpYXQiOjE3MjgzMTgwODUsImV4cCI6MTcyOTUyNzY4NX0.uHdBbqfI4WUaivJPQc_J-aSmQiabD5LyRM8Edr5JElE",
             "Content-Type": "application/json",
           },
           body: JSON.stringify(updatedComment),
@@ -139,19 +147,28 @@ const BookDetails = () => {
       <Container>
         <Row className="justify-content-center">
           <Col sm={12} md={6} className="mb-4">
-            <Card className={`${toggleSingleBookClass}`}>
-              {singleBook.img && (
-                <Card.Img variant="top" src={singleBook.img} />
-              )}
-              <Card.Body>
-                <Card.Title className="singleBookTitle">
-                  {singleBook.title}
-                </Card.Title>
-                <Card.Text className="singleBookText">
-                  {singleBook.category}
-                </Card.Text>
-              </Card.Body>
-            </Card>
+            {isBookLoading ? (
+              <LoadingSpinner /> 
+            ) : Object.keys(singleBook).length === 0 ? (
+              <Alert variant="danger">Nessun libro trovato.</Alert> 
+            ) : (
+              <Card className={`${toggleSingleBookClass}`}>
+                {singleBook.img && (
+                  <Card.Img variant="top" src={singleBook.img} />
+                )}
+                <Card.Body>
+                  <Card.Title className="singleBookTitle">
+                    {singleBook.title}
+                  </Card.Title>
+                  <Card.Text className="singleBookText">
+                    {singleBook.category}
+                  </Card.Text>
+                  <Card.Text className="singleBookText">
+                    {`${singleBook.price} €`}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            )}
           </Col>
 
           <Col sm={12} md={6}>
@@ -162,7 +179,7 @@ const BookDetails = () => {
                   <LoadingSpinner />
                 ) : isCommentError ? (
                   <Alert variant="danger">
-                    Oops, qualcosa è andato storto...
+                    Oops, qualcosa è andato storto nel caricamento dei commenti...
                   </Alert>
                 ) : singleBookComments.length > 0 ? (
                   singleBookComments.map((singleBookComment) => (
@@ -176,7 +193,7 @@ const BookDetails = () => {
                       <li>
                         <strong>Rate:</strong> {singleBookComment.rate}
                       </li>
-                      <div className=" d-flex align-items-center justify-content-center gap-2">
+                      <div className="d-flex align-items-center justify-content-center gap-2">
                         <Button
                           variant="info"
                           className="mt-2"
@@ -197,7 +214,7 @@ const BookDetails = () => {
                     </ul>
                   ))
                 ) : (
-                  <p>No comments available.</p>
+                  <p>No comments available.</p> 
                 )}
               </Card.Body>
             </Card>

@@ -78,4 +78,50 @@ describe("Test BookCard Component", () => {
     fireEvent.click(cardElement);
     expect(cardElement).toHaveClass("cards");
   });
+
+  it("should apply 'cardBorder' class when the card is selected", () => {
+    const { getByTestId } = render(
+      <MemoryRouter>
+        <SearchProvider>
+          <LightModeProvider>
+            <BookCard
+              asin={"12345"}
+              img={"https://example.com/book.jpg"}
+              title={"Il Signore degli Anelli"}
+              category={"fantasy"}
+              onCardClick={jest.fn()}
+              isSelected={true} 
+            />
+          </LightModeProvider>
+        </SearchProvider>
+      </MemoryRouter>
+    );
+
+    const cardElement = getByTestId("cardTest");
+    expect(cardElement).toHaveClass("cardBorder"); 
+  });
+
+  it("should not have 'cardBorder' class when the card is not selected", () => {
+    const { getByTestId } = render(
+      <MemoryRouter>
+        <SearchProvider>
+          <LightModeProvider>
+            <BookCard
+              asin={"12345"}
+              img={"https://example.com/book.jpg"}
+              title={"Il Signore degli Anelli"}
+              category={"fantasy"}
+              onCardClick={jest.fn()}
+              isSelected={false} 
+            />
+          </LightModeProvider>
+        </SearchProvider>
+      </MemoryRouter>
+    );
+
+    const cardElement = getByTestId("cardTest");
+    expect(cardElement).not.toHaveClass("cardBorder"); 
+  });
+
+
 });

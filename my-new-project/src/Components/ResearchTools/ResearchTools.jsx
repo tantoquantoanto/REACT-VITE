@@ -1,4 +1,9 @@
 import { createContext, useEffect, useState } from "react";
+import Fantasy from "../../assets/mainAssets/fantasy.json";
+import Horror from  "../../assets/mainAssets/horror.json";
+import History from  "../../assets/mainAssets/history.json";
+import Romance from  "../../assets/mainAssets/romance.json";
+import Scifi from  "../../assets/mainAssets/scifi.json";
 
 export const SearchContext = createContext();
 
@@ -6,29 +11,35 @@ export const SearchProvider = ({ children }) => {
   const [isBookError, setIsBookError] = useState("");
   const [isBookLoading, setIsBookLoading] = useState(false);
   const [books, setBooks] = useState([]);
-
-  const endPoint = "https://epibooks.onrender.com/";
   const [allBooks, setAllBooks] = useState([]);
 
-  const getBooksFromApi = async () => {
-    setIsBookLoading(true);
-    try {
-      const response = await fetch(endPoint);
-      const data = await response.json();
+  const combinedBooksArray = [
+    ...Fantasy.slice(0, 10),
+    ...Horror.slice(0, 10),
+    ...Romance.slice(0, 10),
+    ...Scifi.slice(0, 10),
+    ...History.slice(0, 10),
+  ];
 
-      setAllBooks(data.slice(0, 40));
-      setBooks(data.slice(0, 40));
-      console.log(data);
-    } catch (error) {
-      setIsBookError(error.message);
-      console.log(error);
-    } finally {
-      setIsBookLoading(false);
-    }
+  const getBooksFromStaticData = () => {
+    setIsBookLoading(true);
+    setIsBookError("");
+
+    setTimeout(() => {
+      try {
+        setAllBooks(combinedBooksArray);
+        setBooks(combinedBooksArray);
+      } catch (error) {
+        setIsBookError(error.message);
+        console.log(error);
+      } finally {
+        setIsBookLoading(false);
+      }
+    }, 1000);
   };
 
   useEffect(() => {
-    getBooksFromApi();
+    getBooksFromStaticData();
   }, []);
 
   return (
