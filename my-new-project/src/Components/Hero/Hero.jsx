@@ -28,7 +28,7 @@ const Hero = () => {
     className="p-0 p-md-5 d-flex align-items-center justify-content-center"
     
   >
-    <Col className={`heroCol d-flex p-0 flex-column flex-md-row`}
+    <Col className={` ${toggleHeroLightMode} d-flex p-0 flex-column flex-md-row`}
     data-testid = "heroTest">
       
       <div className="heroLeft w-100 w-md-50">
