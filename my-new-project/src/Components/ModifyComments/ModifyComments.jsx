@@ -84,6 +84,8 @@ const ModifyComments = ({
           type="text"
           name="comment"
           required
+          value={formState.comment}
+          placeholder="Cambia il tuo commento"
         />
         <Form.Control
           onChange={handleFormChange}
@@ -92,6 +94,8 @@ const ModifyComments = ({
           max={5}
           name="rate"
           required
+          value={formState.rate}
+          placeholder="Cambia il tuo rate"
         />
         <div className="d-flex align-items-center justify-content-center gap-2 mt-2">
           <Button 

@@ -11,6 +11,7 @@ const LoadingSpinner = () => {
             className="dotLoader"
             color="#ff6f61"
             
+            
             />
 
             </Col>

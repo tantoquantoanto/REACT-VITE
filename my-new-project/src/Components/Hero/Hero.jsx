@@ -20,16 +20,23 @@ const Hero = () => {
   const randomBook = allBooks[randomIndex];
 
   return (
-    <section className="hero d-flex align-items-center justify-content-center">
+    <section 
+    className="hero d-flex align-items-center justify-content-center"
+    >
      <Container>
-  <Row className="p-0 p-md-5 d-flex align-items-center justify-content-center">
-    <Col className={`heroCol d-flex p-0 flex-column flex-md-row`}>
+  <Row 
+    className="p-0 p-md-5 d-flex align-items-center justify-content-center"
+    
+  >
+    <Col className={`heroCol d-flex p-0 flex-column flex-md-row`}
+    data-testid = "heroTest">
       
       <div className="heroLeft w-100 w-md-50">
         <img
           className="img-fluid object-fit-contain"
           src={randomBook.img}
           alt="copertina libro"
+          
         />
       </div>
 

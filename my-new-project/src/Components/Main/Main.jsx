@@ -32,7 +32,8 @@ const Main = () => {
                 <h3 className="mt-2 mb-2 align-self-start">Books</h3>
 
              
-                {isLoading && !isError && <LoadingSpinner />}
+                {isLoading && !isError && <LoadingSpinner
+                data-testid = "loading-spinner" />}
 
                
                 {!isLoading && isError !== "" && (
@@ -53,6 +54,7 @@ const Main = () => {
                       img={book.img}
                       isSelected={selectedBookId === book.asin} 
                       onCardClick={handleBookSelection} 
+                      data-testid = "cardTest"
                     />
                   ))}
              </Row>

@@ -33,7 +33,8 @@ const NavInput = () => {
       <input 
       type="text"
       value={inputValue}
-      onChange={onChangeInput} />
+      onChange={onChangeInput}
+      placeholder="Cerca un libro"/>
       <button 
       className="btn btn-primary"
       onClick={searchBooks}> Cerca </button>
